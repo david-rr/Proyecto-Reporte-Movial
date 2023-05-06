@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
     tools:context=".Login">
@@ -10,105 +10,120 @@
     <ImageView
         android:id="@+id/imagenFondo"
         android:layout_width="410dp"
-        android:layout_height="358dp"
-        android:layout_marginBottom="540dp"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_height="328dp"
+        app:srcCompat="@mipmap/descargaFondo"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="20dp" />
 
     <TextView
         android:id="@+id/mensajeLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="60dp"
         android:fontFamily="casual"
         android:text="Login"
         android:textColor="#FFFFFF"
         android:textSize="48sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="60dp" />
 
     <EditText
         android:id="@+id/textPassLogin"
         android:layout_width="246dp"
-        android:layout_height="62dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="364dp"
+        android:layout_height="59dp"
         android:background="#FFFFFF"
         android:ems="10"
         android:inputType="textPassword"
         android:paddingLeft="5dp"
         android:text="Password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.121"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="364dp" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="65dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="304dp"
-        android:layout_marginTop="364dp"
+        android:layout_width="64dp"
+        android:layout_height="59dp"
         android:background="#F8F1F1"
         android:src="@android:drawable/ic_lock_idle_lock"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_lock_lock" />
+        app:srcCompat="@android:drawable/ic_lock_lock"
+        tools:layout_editor_absoluteX="308dp"
+        tools:layout_editor_absoluteY="364dp" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="64dp"
         android:layout_height="59dp"
-        android:layout_marginTop="264dp"
-        android:layout_marginEnd="38dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="308dp"
+        tools:layout_editor_absoluteY="264dp"
         tools:src="@tools:sample/avatars" />
 
     <EditText
         android:id="@+id/textUserLogin"
         android:layout_width="246dp"
         android:layout_height="59dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="264dp"
         android:background="#FFFFFF"
         android:ems="10"
         android:inputType="text"
         android:paddingLeft="5dp"
         android:singleLine="false"
         android:text="Usuario"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="264dp" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnIniciarLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="448dp"
         android:background="@color/white"
         android:text="Iniciar sesión"
-        android:textColor="#686868"
+        android:textColor="#FF000000"
         android:textStyle="bold"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="531dp" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="222dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="564dp"
-        android:background="@color/white"
-        android:text="Olvidaste la contraseña?"
-        android:textColorHighlight="@color/design_default_color_primary"
-        android:textColorLink="#5431B6"
+        android:id="@+id/btnPassForgetLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="¿Olvidaste la contraseña?"
+        android:layout_margin="0dp"
+        android:textColor="#FF1C77FF"
+        app:layout_constraintTop_toBottomOf="@+id/textPassLogin"
+        tools:layout_editor_absoluteX="55dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <Button
+        android:id="@+id/btnRegistroLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:text="Registrarse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="86dp"
+        android:layout_height="32dp"
+        android:text="O"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="162dp"
+        tools:layout_editor_absoluteY="597dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
