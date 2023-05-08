@@ -11,14 +11,16 @@
         android:id="@+id/imagenFondo2"
         android:layout_width="410dp"
         android:layout_height="328dp"
-        app:srcCompat="@mipmap/descargaFondo"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="20dp" />
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/descarga_fondo" />
 
     <TextView
         android:id="@+id/singup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="87dp"
         android:fontFamily="casual"
         android:text="Sing Up"
         android:textColor="#FFFFFF"
@@ -27,19 +29,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="87dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/nombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="387dp"
         android:fontFamily="casual"
         android:text="Nombre"
         android:textColor="@color/white"
         android:textSize="20dp"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="387dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/nom"
@@ -60,14 +63,14 @@
         android:id="@+id/nombreus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="10dp"
         android:fontFamily="casual"
         android:text="Nombre de Usuario"
         android:textColor="@color/white"
         android:textSize="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/nom"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="387dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nom" />
 
     <EditText
         android:id="@+id/us"
@@ -86,14 +89,14 @@
         android:id="@+id/correo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="10dp"
         android:fontFamily="casual"
         android:text="Email"
         android:textColor="@color/white"
         android:textSize="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/us"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="387dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/us" />
 
     <EditText
         android:id="@+id/cor"
@@ -112,14 +115,14 @@
         android:id="@+id/contraseña"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="10dp"
         android:fontFamily="casual"
         android:text="Contraseña"
         android:textColor="@color/white"
         android:textSize="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/cor"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="387dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cor" />
 
     <EditText
         android:id="@+id/con"
@@ -138,8 +141,8 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:layout_marginTop="16dp"
+        android:background="@color/white"
         android:text="Registrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -170,7 +173,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="767dp"
-        app:layout_constraintTop_toBottomOf="@+id/or" />
+        app:layout_constraintTop_toBottomOf="@+id/or"
+        tools:layout_editor_absoluteY="767dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
