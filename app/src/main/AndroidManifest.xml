@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,11 +16,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ReporteMovial"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAVA-d1BcLYNhbLh_JlzkCf_fugtoj6_sU" />
+
         <activity
             android:name=".Generar_Reporte"
             android:exported="false" />
         <activity
             android:name=".SignUp"
+            android:exported="false" />
+        <activity
+            android:name=".FeedCiudadano"
+            android:exported="false" />
+        <activity
+            android:name=".FeedAdmin"
             android:exported="false" />
         <activity
             android:name=".Login"
