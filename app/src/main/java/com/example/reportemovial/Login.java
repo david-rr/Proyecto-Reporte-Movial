@@ -98,7 +98,7 @@ public class Login extends AppCompatActivity {
                                                         }
                                                     }
                                                     if (b != 1) {
-                                                        Toast.makeText(Login.this, "ban: " + b, Toast.LENGTH_SHORT).show();
+                                                        //Toast.makeText(Login.this, "ban: " + b, Toast.LENGTH_SHORT).show();
                                                         Intent i = new Intent(Login.this, FeedCiudadano.class);
                                                         startActivity(i);
                                                     }
