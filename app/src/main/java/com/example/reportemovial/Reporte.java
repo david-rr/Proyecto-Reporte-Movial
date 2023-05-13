@@ -4,15 +4,15 @@ import java.util.Date;
 
 public class Reporte {
     private String descripcion;
-    //private String estado;
+    private String estado;
     //private String imagen;
     private String tipo;
     //private Date fecha;
     public Reporte(){}
 
-    public Reporte(String descripcion, /**String estado, String imagen,*/ String tipo /**, Date fecha*/){
+    public Reporte(String descripcion, String estado, /**String imagen,*/ String tipo /**, Date fecha*/){
         this.descripcion = descripcion;
-        //this.estado = estado;
+        this.estado = estado;
         //this.imagen = imagen;
         this.tipo = tipo;
         //this.fecha = fecha;
@@ -26,7 +26,7 @@ public class Reporte {
         this.descripcion = descripcion;
     }
 
-    /**public String getEstado() {
+    public String getEstado() {
         return estado;
     }
 
@@ -34,7 +34,7 @@ public class Reporte {
         this.estado = estado;
     }
 
-    public String getImagen() {
+     /**public String getImagen() {
         return imagen;
     }
 

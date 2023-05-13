@@ -22,7 +22,7 @@ public class FeedAdmin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.feed_admin);//Feed de Ciudadano
 
-        RecyclerViewReporte = findViewById(R.id.RecyclerReport);
+        RecyclerViewReporte = findViewById(R.id.RecyclerReportAdmin);
         RecyclerViewReporte.setLayoutManager(new LinearLayoutManager(this));
 
         Query query = db.collection("reportes");
