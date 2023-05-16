@@ -62,7 +62,6 @@
                 android:layout_width="421dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="10dp"
-                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +69,7 @@
                 tools:layout_editor_absoluteY="117dp">
 
                 <RadioGroup
-                    android:layout_width="167dp"
+                    android:layout_width="366dp"
                     android:layout_height="150dp"
                     android:layout_marginStart="30dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -79,75 +78,29 @@
                     tools:layout_editor_absoluteY="117dp">
 
                     <RadioButton
-                        android:id="@+id/radioButton"
+                        android:id="@+id/typeVialGR"
                         android:layout_width="167dp"
                         android:layout_height="30dp"
-                        android:text="Topes" />
+                        android:text="Vial" />
 
                     <RadioButton
-                        android:id="@+id/radioButton2"
+                        android:id="@+id/typeAguaGR"
                         android:layout_width="167dp"
                         android:layout_height="30dp"
-                        android:text="Señalizacion" />
+                        android:text="Agua/Alcantarillado" />
 
                     <RadioButton
-                        android:id="@+id/radioButton3"
-                        android:layout_width="167dp"
-                        android:layout_height="30dp"
-                        android:text="Banquetas" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton4"
-                        android:layout_width="167dp"
-                        android:layout_height="30dp"
-                        android:text="Alcantarillado" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton5"
+                        android:id="@+id/typeAlumbradoGR"
                         android:layout_width="167dp"
                         android:layout_height="30dp"
                         android:text="Alumbrado" />
 
-                </RadioGroup>
-
-                <RadioGroup
-                    android:layout_width="167dp"
-                    android:layout_height="150dp"
-                    android:layout_marginStart="30dp"
-                    tools:layout_editor_absoluteX="390dp"
-                    tools:layout_editor_absoluteY="325dp">
-
                     <RadioButton
-                        android:id="@+id/radioButton6"
+                        android:id="@+id/typeArbolGR"
                         android:layout_width="167dp"
                         android:layout_height="30dp"
-                        android:text="Luminarias" />
+                        android:text="Arbol Caido" />
 
-                    <RadioButton
-                        android:id="@+id/radioButton7"
-                        android:layout_width="167dp"
-                        android:layout_height="30dp"
-                        android:text="Postes" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton8"
-                        android:layout_width="167dp"
-                        android:layout_height="30dp"
-                        android:text="Arboles" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton9"
-                        android:layout_width="167dp"
-                        android:layout_height="30dp"
-                        android:text="Baches" />
-
-                    <TextView
-                        android:id="@+id/textView5"
-                        android:layout_width="167dp"
-                        android:layout_height="30dp"
-                        android:padding="5dp"
-                        android:inputType="text"
-                        android:hint="Otro__________________" />
                 </RadioGroup>
 
             </LinearLayout>
@@ -219,7 +172,7 @@
                 android:id="@+id/mapView"
                 android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="300dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView3"
@@ -260,7 +213,7 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/botones_generar_reporte"
-                android:text="Caragar foto"
+                android:text="Cargar foto"
                 android:textColor="@color/black"
                 app:backgroundTint="@null"
                 app:layout_constraintStart_toStartOf="parent"
