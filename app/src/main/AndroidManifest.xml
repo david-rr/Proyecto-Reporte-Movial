@@ -35,6 +35,18 @@
             android:name=".FeedAdmin"
             android:exported="false" />
         <activity
+            android:name=".Vial"
+            android:exported="false" />
+        <activity
+            android:name=".Agua"
+            android:exported="false"/>
+        <activity
+            android:name=".Alumbrado"
+            android:exported="false"/>
+        <activity
+            android:name=".Arbol"
+            android:exported="false"/>
+        <activity
             android:name=".Login"
             android:exported="true">
             <intent-filter>
