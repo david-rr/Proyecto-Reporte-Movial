@@ -115,7 +115,7 @@ public class Generar_Reporte extends AppCompatActivity implements OnMapReadyCall
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                i.setType("image/");
+                i.setType("image/");    
                 startActivityForResult(i.createChooser(i, "Seleccione la aplicacion"), 10);
             }
         });

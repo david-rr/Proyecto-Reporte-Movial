@@ -17,7 +17,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -28,8 +27,10 @@ import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,6 +40,7 @@ public class ReporteAdapter extends FirestoreRecyclerAdapter<Reporte, ReporteAda
     private int auxTot, auxPendiente, auxProgreso, auxAtendido;
     private int auxVial, auxAgua, auxAlumbrado, auxArbol;
     private android.content.Context mContext;
+    private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
 
     /**
      * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
@@ -55,7 +57,6 @@ public class ReporteAdapter extends FirestoreRecyclerAdapter<Reporte, ReporteAda
     protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Reporte Reporte) {
         DocumentSnapshot ReporteDocument = getSnapshots().getSnapshot(holder.getAdapterPosition());
         final String id = ReporteDocument.getId();
-        FirebaseStorage storage = FirebaseStorage.getInstance();
         holder.TextViewTitulo.setText(Reporte.getTipo());
         holder.TextViewDescripcion.setText(Reporte.getDescripcion());
         //holder.ImageViewEvidencia;
@@ -86,10 +87,26 @@ public class ReporteAdapter extends FirestoreRecyclerAdapter<Reporte, ReporteAda
 
         //Glide.with(mContext).load("images/"+Reporte.getImagen()).into(holder.ImageViewEvidencia);
         //Glide.with(mContext).load(storageReference).into(holder.ImageViewEvidencia);
-        StorageReference storageRef = storage.getReference();
+
         StorageReference islandRef = storageRef.child("images/"+Reporte.getImagen());
 
-        File localFile = null;
+        final long ONE_MEGABYTE = 1024 * 1024;
+        islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                // Data for "images/island.jpg" is returns, use this as needed
+                InputStream is = new ByteArrayInputStream(bytes);
+                Bitmap bmp = BitmapFactory.decodeStream(is);
+                holder.ImageViewEvidencia.setImageBitmap(bmp);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+            }
+        });
+
+        /*File localFile = null;
         try {
             localFile = File.createTempFile("images", "jpg");
         } catch (IOException e) {
@@ -107,7 +124,7 @@ public class ReporteAdapter extends FirestoreRecyclerAdapter<Reporte, ReporteAda
             public void onFailure(@NonNull Exception exception) {
                 // Handle any errors
             }
-        });
+        });*/
 
 
 
