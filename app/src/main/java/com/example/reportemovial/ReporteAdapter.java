@@ -1,23 +1,19 @@
 package com.example.reportemovial;
 
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
+import static com.example.reportemovial.FeedAdmin.Resumen;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
-import com.example.reportemovial.Reporte;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -25,11 +21,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
-
 public class ReporteAdapter extends FirestoreRecyclerAdapter<Reporte, ReporteAdapter.ViewHolder> {
+
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    Activity activity;
+    private int auxTot, auxPendiente, auxProgreso, auxAtendido;
+    private int auxVial, auxAgua, auxAlumbrado, auxArbol;
+
     /**
      * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
      * FirestoreRecyclerOptions} for configuration options.
@@ -69,7 +66,26 @@ public class ReporteAdapter extends FirestoreRecyclerAdapter<Reporte, ReporteAda
 
             }
         });
+
+        auxTot+=1;
+        if(Reporte.getEstado().equals("Pendiente")) auxPendiente+=1;
+        if(Reporte.getEstado().equals("En progreso")) auxProgreso+=1;
+        if(Reporte.getEstado().equals("Atendido")) auxAtendido+=1;
+        if(Reporte.getTipo().equals("Vial")) auxVial+=1;
+        if(Reporte.getTipo().equals("Agua/Alcantarillado")) auxAgua+=1;
+        if(Reporte.getTipo().equals("Alumbrado")) auxAlumbrado+=1;
+        if(Reporte.getTipo().equals("Árbol Caído")) auxArbol+=1;
+
+        Resumen.setTotal(auxTot);
+        Resumen.setPendiente(auxPendiente);
+        Resumen.setProgreso(auxProgreso);
+        Resumen.setAtendido(auxAtendido);
+        Resumen.setVial(auxVial);
+        Resumen.setAgua(auxAgua);
+        Resumen.setAlumbrado(auxAlumbrado);
+        Resumen.setArbol(auxArbol);
     }
+
 
     private void activarEstado(ViewHolder holder, int position, String estado) {
         if(estado.equals("Pendiente"))
