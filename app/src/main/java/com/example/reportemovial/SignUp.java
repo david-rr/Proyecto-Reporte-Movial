@@ -1,8 +1,10 @@
 package com.example.reportemovial;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -65,7 +67,6 @@ public class SignUp extends AppCompatActivity {
                 if( txtCorreo.getText().toString().equals(txtCorreo.getText().toString()) && txtPass.getText().toString()
                         .equals(txtPass.getText().toString())){ //reglas de registro
                     registro(txtCorreo.getText().toString(), txtPass.getText().toString());
-
                 }
             }
         });
@@ -85,7 +86,6 @@ public class SignUp extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            finish();
                             Toast.makeText(SignUp.this, "Usuario registrado correctamente",
                                     Toast.LENGTH_LONG).show();
                             db.collection("usuarios_registrados")
@@ -97,6 +97,28 @@ public class SignUp extends AppCompatActivity {
                                             Toast.makeText(SignUp.this, "No se ha podido registrar cuenta.", Toast.LENGTH_SHORT).show();
                                         }
                                     });
+                            AlertDialog dialogo = new AlertDialog
+                                    .Builder(SignUp.this) // NombreDeTuActividad.this, o getActivity() si es dentro de un fragmento
+                                    .setPositiveButton("Continuar", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Intent i = new Intent(SignUp.this, FeedCiudadano.class);
+                                            startActivity(i);
+                                            finish();
+                                        }
+                                    })
+                                    /*.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            // Hicieron click en el botón negativo, no confirmaron
+                                            // Simplemente descartamos el diálogo
+                                            dialog.dismiss();
+                                        }
+                                    })*/
+                                    .setTitle("Usuario Registrado") // El título
+                                    .setMessage("Los datos se han registrado correctamente.") // El mensaje
+                                    .create();// No olvides llamar a Create, ¡pues eso crea el AlertDialog!
+                            dialogo.show();
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());

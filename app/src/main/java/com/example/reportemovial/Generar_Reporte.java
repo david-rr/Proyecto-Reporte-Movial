@@ -131,39 +131,43 @@ public class Generar_Reporte extends AppCompatActivity implements OnMapReadyCall
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                seleccionRB();
-                String img = enviarImagen();
-
-                Map<String, Object> user = new HashMap<>();
-                user.put("tipo", tipo);
-                user.put("descripcion", txtdesc.getText().toString());
-                user.put("imagen", img);
-                user.put("ubicacion", point);
-                user.put("estado", "Pendiente");
-
-
-                // Add a new document with a generated ID
-                db.collection("reportes")
-                        .add(user)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                                Intent i = new Intent(v.getContext(), FeedCiudadano.class);
-                                startActivity(i);
-                                finish();
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.w(TAG, "Error adding document", e);
-                                Toast.makeText(Generar_Reporte.this, "No se ha podido guardar el reporte.", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                enviarReporte(v);
             }
         });
 
+    }
+
+    protected void enviarReporte(View v){
+        seleccionRB();
+        String img = enviarImagen();
+
+        Map<String, Object> user = new HashMap<>();
+        user.put("tipo", tipo);
+        user.put("descripcion", txtdesc.getText().toString());
+        user.put("imagen", img);
+        user.put("ubicacion", point);
+        user.put("estado", "Pendiente");
+
+
+        // Add a new document with a generated ID
+        db.collection("reportes")
+                .add(user)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                        Intent i = new Intent(v.getContext(), FeedCiudadano.class);
+                        startActivity(i);
+                        finish();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error adding document", e);
+                        Toast.makeText(Generar_Reporte.this, "No se ha podido guardar el reporte.", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     @Override
