@@ -75,7 +75,7 @@ public class Login extends AppCompatActivity {
     private void iniciarSesion(String email, String password){
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null) {
+        //if(currentUser != null) {
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
@@ -114,7 +114,7 @@ public class Login extends AppCompatActivity {
                         }
                     });
         }
-    }
+   // }
 
     private void reload() {
         Toast.makeText(Login.this, "Vuelve a intentarlo", Toast.LENGTH_SHORT).show();

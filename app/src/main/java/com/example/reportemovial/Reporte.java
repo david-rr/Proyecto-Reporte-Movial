@@ -5,17 +5,15 @@ import java.util.Date;
 public class Reporte {
     private String descripcion;
     private String estado;
-    //private String imagen;
+    private String imagen;
     private String tipo;
-    //private Date fecha;
     public Reporte(){}
 
-    public Reporte(String descripcion, String estado, /**String imagen,*/ String tipo /**, Date fecha*/){
+    public Reporte(String descripcion, String estado, String imagen, String tipo){
         this.descripcion = descripcion;
         this.estado = estado;
         //this.imagen = imagen;
         this.tipo = tipo;
-        //this.fecha = fecha;
     }
 
     public String getDescripcion() {
@@ -34,13 +32,9 @@ public class Reporte {
         this.estado = estado;
     }
 
-     /**public String getImagen() {
-        return imagen;
-    }
+     public String getImagen() {return imagen;}
 
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }*/
+    public void setImagen(String imagen) {this.imagen = imagen;}
 
     public String getTipo() {
         return tipo;
@@ -50,11 +44,4 @@ public class Reporte {
         this.tipo = tipo;
     }
 
-    /**public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }*/
 }

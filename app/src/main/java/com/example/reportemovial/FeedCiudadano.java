@@ -30,7 +30,7 @@ public class FeedCiudadano extends AppCompatActivity {
         FirestoreRecyclerOptions<Reporte> firestoreRecyclerOptions = new FirestoreRecyclerOptions.Builder<Reporte>()
                 .setQuery(query, Reporte.class).build();
 
-        ReportAdapter = new ReporteAdapter(firestoreRecyclerOptions);
+        ReportAdapter = new ReporteAdapter(firestoreRecyclerOptions, FeedCiudadano.this);
         ReportAdapter.notifyDataSetChanged();
         RecyclerViewReporte.setAdapter(ReportAdapter);
     }
