@@ -79,40 +79,30 @@
         app:layout_constraintStart_toStartOf="@id/toolbar"
         app:layout_constraintTop_toTopOf="@id/toolbar" />
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
-        android:layout_width="414dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="93dp"
-        android:layout_marginBottom="608dp"
-        android:background="#CCCCCC"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="112dp"
-        android:layout_marginTop="651dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="#e32424"
         android:text="Generar un Reporte"
         android:textSize="16sp"
         android:textStyle="italic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecyclerReportCiudadano"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_height="652dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
         android:padding="3dp"
-        app:layout_constraintTop_toBottomOf="@id/toolbar2">
+        app:layout_constraintBottom_toTopOf="@id/button4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
     </androidx.recyclerview.widget.RecyclerView>
 

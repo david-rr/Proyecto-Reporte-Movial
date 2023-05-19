@@ -1,8 +1,5 @@
 package com.example.reportemovial;
 
-
-import static com.example.reportemovial.FeedAdmin.Resumen;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -31,11 +28,9 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ReporteAdapter extends FirestoreRecyclerAdapter<Reporte, ReporteAdapter.ViewHolder> {
+public class ReporteAdapterFiltroTipo extends FirestoreRecyclerAdapter<Reporte, ReporteAdapterFiltroTipo.ViewHolder> {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private int auxTot, auxPendiente, auxProgreso, auxAtendido;
-    private int auxVial, auxAgua, auxAlumbrado, auxArbol;
     private android.content.Context mContext;
     private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
 
@@ -45,13 +40,13 @@ public class ReporteAdapter extends FirestoreRecyclerAdapter<Reporte, ReporteAda
      *
      * @param options
      */
-    public ReporteAdapter(@NonNull FirestoreRecyclerOptions<Reporte> options, Context mContext) {
+    public ReporteAdapterFiltroTipo(@NonNull FirestoreRecyclerOptions<Reporte> options, Context mContext) {
         super(options);
         this.mContext = mContext;
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Reporte Reporte) {
+    protected void onBindViewHolder(@NonNull ReporteAdapterFiltroTipo.ViewHolder holder, int position, @NonNull Reporte Reporte) {
         DocumentSnapshot ReporteDocument = getSnapshots().getSnapshot(holder.getAdapterPosition());
         final String id = ReporteDocument.getId();
         holder.TextViewTitulo.setText(Reporte.getTipo());
@@ -98,27 +93,10 @@ public class ReporteAdapter extends FirestoreRecyclerAdapter<Reporte, ReporteAda
             }
         });
 
-        auxTot+=1;
-        if(Reporte.getEstado().equals("Pendiente")) auxPendiente+=1;
-        if(Reporte.getEstado().equals("En progreso")) auxProgreso+=1;
-        if(Reporte.getEstado().equals("Atendido")) auxAtendido+=1;
-        if(Reporte.getTipo().equals("Vial")) auxVial+=1;
-        if(Reporte.getTipo().equals("Agua/Alcantarillado")) auxAgua+=1;
-        if(Reporte.getTipo().equals("Alumbrado")) auxAlumbrado+=1;
-        if(Reporte.getTipo().equals("Árbol Caído")) auxArbol+=1;
-
-        Resumen.setTotal(auxTot);
-        Resumen.setPendiente(auxPendiente);
-        Resumen.setProgreso(auxProgreso);
-        Resumen.setAtendido(auxAtendido);
-        Resumen.setVial(auxVial);
-        Resumen.setAgua(auxAgua);
-        Resumen.setAlumbrado(auxAlumbrado);
-        Resumen.setArbol(auxArbol);
     }
 
 
-    private void activarEstado(ViewHolder holder, int position, String estado) {
+    private void activarEstado(ReporteAdapterFiltroTipo.ViewHolder holder, int position, String estado) {
         if(estado.equals("Pendiente"))
             holder.pendiente.setChecked(true);
         if(estado.equals("En progreso"))
@@ -129,7 +107,7 @@ public class ReporteAdapter extends FirestoreRecyclerAdapter<Reporte, ReporteAda
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ReporteAdapterFiltroTipo.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View vista = LayoutInflater.from(mContext).inflate(R.layout.cart_reporte_admin, parent, false);
         return new ViewHolder(vista);
     }
