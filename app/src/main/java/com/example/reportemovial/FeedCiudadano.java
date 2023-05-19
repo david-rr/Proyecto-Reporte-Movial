@@ -13,7 +13,7 @@ import com.google.firebase.firestore.Query;
 public class FeedCiudadano extends AppCompatActivity {
 
     private RecyclerView RecyclerViewReporte;
-    private ReporteAdapter ReportAdapter;
+    private ReporteAdapterCiudadano ReportAdapter;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -30,7 +30,7 @@ public class FeedCiudadano extends AppCompatActivity {
         FirestoreRecyclerOptions<Reporte> firestoreRecyclerOptions = new FirestoreRecyclerOptions.Builder<Reporte>()
                 .setQuery(query, Reporte.class).build();
 
-        ReportAdapter = new ReporteAdapter(firestoreRecyclerOptions, FeedCiudadano.this);
+        ReportAdapter = new ReporteAdapterCiudadano(firestoreRecyclerOptions, FeedCiudadano.this);
         ReportAdapter.notifyDataSetChanged();
         RecyclerViewReporte.setAdapter(ReportAdapter);
     }

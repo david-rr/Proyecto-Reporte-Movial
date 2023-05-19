@@ -16,7 +16,7 @@ import com.google.firebase.firestore.Query;
 public class Agua extends AppCompatActivity {
 
     private RecyclerView RecyclerViewAgua;
-    private ReporteAdapter ReportAdapterAgua;
+    private ReporteAdapterFiltroTipo ReportAdapterAgua;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private Button btnFeed, btnVial, btnAlumbrado, btnArbol;
 
@@ -33,12 +33,12 @@ public class Agua extends AppCompatActivity {
         RecyclerViewAgua = findViewById(R.id.RecyclerReportAgua);
         RecyclerViewAgua.setLayoutManager(new LinearLayoutManager(this));
 
-        Query queryV = db.collection("reportes").whereEqualTo("tipo", "Agua/Alcantarillado");
+        Query query = db.collection("reportes").whereEqualTo("tipo", "Agua/Alcantarillado");
 
         FirestoreRecyclerOptions<Reporte> firestoreRecyclerOptionsVial = new FirestoreRecyclerOptions.Builder<Reporte>()
-                .setQuery(queryV, Reporte.class).build();
+                .setQuery(query, Reporte.class).build();
 
-        ReportAdapterAgua = new ReporteAdapter(firestoreRecyclerOptionsVial, Agua.this);
+        ReportAdapterAgua = new ReporteAdapterFiltroTipo(firestoreRecyclerOptionsVial, Agua.this);
         ReportAdapterAgua.startListening();
         ReportAdapterAgua.notifyDataSetChanged();
         RecyclerViewAgua.setAdapter(ReportAdapterAgua);

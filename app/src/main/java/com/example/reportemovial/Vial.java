@@ -16,7 +16,7 @@ import com.google.firebase.firestore.Query;
 public class Vial extends AppCompatActivity {
 
     private RecyclerView RecyclerViewVial;
-    private ReporteAdapter ReportAdapterVial;
+    private ReporteAdapterFiltroTipo ReportAdapterVial;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private Button btnFeed, btnAgua, btnAlumbrado, btnArbol;
 
@@ -33,12 +33,12 @@ public class Vial extends AppCompatActivity {
         RecyclerViewVial = findViewById(R.id.RecyclerReportVial);
         RecyclerViewVial.setLayoutManager(new LinearLayoutManager(this));
 
-        Query queryV = db.collection("reportes").whereEqualTo("tipo", "Vial");
+        Query query = db.collection("reportes").whereEqualTo("tipo", "Vial");
 
         FirestoreRecyclerOptions<Reporte> firestoreRecyclerOptionsVial = new FirestoreRecyclerOptions.Builder<Reporte>()
-                .setQuery(queryV, Reporte.class).build();
+                .setQuery(query, Reporte.class).build();
 
-        ReportAdapterVial = new ReporteAdapter(firestoreRecyclerOptionsVial, Vial.this);
+        ReportAdapterVial = new ReporteAdapterFiltroTipo(firestoreRecyclerOptionsVial, Vial.this);
         ReportAdapterVial.startListening();
         ReportAdapterVial.notifyDataSetChanged();
         RecyclerViewVial.setAdapter(ReportAdapterVial);
