@@ -16,7 +16,7 @@ import com.google.firebase.firestore.Query;
 public class Arbol extends AppCompatActivity {
 
     private RecyclerView RecyclerViewArbol;
-    private ReporteAdapter ReportAdapterArbol;
+    private ReporteAdapterFiltroTipo ReportAdapterArbol;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private Button btnFeed, btnAgua, btnAlumbrado, btnVial;
 
@@ -33,12 +33,12 @@ public class Arbol extends AppCompatActivity {
         RecyclerViewArbol = findViewById(R.id.RecyclerReportArbol);
         RecyclerViewArbol.setLayoutManager(new LinearLayoutManager(this));
 
-        Query queryV = db.collection("reportes").whereEqualTo("tipo", "Árbol Caído");
+        Query query = db.collection("reportes").whereEqualTo("tipo", "Árbol Caído");
 
         FirestoreRecyclerOptions<Reporte> firestoreRecyclerOptionsVial = new FirestoreRecyclerOptions.Builder<Reporte>()
-                .setQuery(queryV, Reporte.class).build();
+                .setQuery(query, Reporte.class).build();
 
-        ReportAdapterArbol = new ReporteAdapter(firestoreRecyclerOptionsVial, Arbol.this);
+        ReportAdapterArbol = new ReporteAdapterFiltroTipo(firestoreRecyclerOptionsVial, Arbol.this);
         ReportAdapterArbol.startListening();
         ReportAdapterArbol.notifyDataSetChanged();
         RecyclerViewArbol.setAdapter(ReportAdapterArbol);
