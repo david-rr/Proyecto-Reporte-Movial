@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -59,7 +58,7 @@ public class Login extends AppCompatActivity {
         btnOlvidar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(v.getContext(), Generar_Reporte.class);//crear ventana de recuperacion de contraseña
+                Intent i = new Intent(v.getContext(), mis_reportes.class);//crear ventana de recuperacion de contraseña
                 startActivity(i);
             }
         });

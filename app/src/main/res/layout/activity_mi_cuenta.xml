@@ -15,6 +15,7 @@
         android:background="#870101"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+
         app:title="Seguridad Mo-vial"
         app:titleMarginStart="115dp"
         app:titleTextColor="@color/white"
@@ -63,6 +64,7 @@
             android:layout_marginStart="145dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="10dp"
+            android:fontFamily="casual"
             android:text="Usuario"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -73,7 +75,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="-10dp"
-            android:text="Informacion Personal" />
+            android:fontFamily="casual"
+            android:text="Informacion Personal"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/cambiar_datos"
@@ -86,65 +91,87 @@
             android:textColor="@android:color/white" />
         <!-- Name -->
         <TextView
+            android:id="@+id/tag_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="casual"
+            android:text="Nombre:"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/txt_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nombre" />
-        <EditText
-            android:id="@+id/txtNomRegistro"
-            android:layout_width="330dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@color/white"
-            android:ems="10"
-            android:hint="Escriba su nombre"
-            android:inputType="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nombre" />
+            android:textSize="20sp" />
 
         <!-- Email -->
+
+        <TextView
+            android:id="@+id/tag_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="casual"
+            android:text="Email:"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txt_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email" />
+            android:textSize="20sp" />
 
         <!-- Phone -->
+        <TextView
+            android:id="@+id/tag_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="casual"
+            android:text="Telefono:"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/txt_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Telefono" />
+            android:textSize="20sp" />
 
         <!-- Address -->
+        <TextView
+            android:id="@+id/tag_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="casual"
+            android:text="Direccion:"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/txt_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Direccion" />
-        <!-- Address -->
+            android:textSize="20sp" />
+        <!-- Address
         <TextView
             android:id="@+id/cambiar_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cambiar contraseña" />
-        <!-- Address -->
+
         <TextView
             android:id="@+id/actual_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Contraseña Actual"/>
-        <!-- Address -->
+
         <TextView
             android:id="@+id/new_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Contraseña Nueva" />
-        <!-- Address -->
+
         <TextView
             android:id="@+id/donfirm_password"
             android:layout_width="wrap_content"
@@ -158,9 +185,9 @@
             android:layout_marginTop="0dp"
             android:background="?attr/colorControlHighlight"
             android:text="Cambiar Contraseña"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white" /> -->
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/exit_session"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
