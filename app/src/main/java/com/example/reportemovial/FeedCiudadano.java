@@ -27,7 +27,7 @@ public class FeedCiudadano extends AppCompatActivity {
     ///codigo para menu desplegable
     DrawerLayout drawerLayout;
     Button button; //boton para accionar el menu desplegable
-    //Button button2; //boton para las sugerencias
+    Button button2; //boton para las sugerencias
     LinearLayout VisReportes, MisReportes, CrearReportes, MiCuenta;
     //fin de codigo para menu
 
@@ -48,6 +48,18 @@ public class FeedCiudadano extends AppCompatActivity {
         ReportAdapter.notifyDataSetChanged();
         RecyclerViewReporte.setAdapter(ReportAdapter);
 
+        //Inicio Boton que nos debe llevar a las sugerencias
+         button2 = (Button) findViewById(R.id.button2); // botton para ir a las sugerencias
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(view.getContext(), Ayuda_y_sugerencias.class);//
+                startActivity(i);
+            }
+        });
+
+        //Fin de boton  que nos debe llevar a las sugerencias
+
         //Inicio Codigo para menu desplegable
         drawerLayout = findViewById(R.id.drawer_layout);
         VisReportes = findViewById(R.id.VisReportes); //actividad Principal feed ciudadano
@@ -55,7 +67,7 @@ public class FeedCiudadano extends AppCompatActivity {
         CrearReportes = findViewById(R.id.CrearReportes);
         //MiCuenta = findViewById(R.id.MiCuenta);
         button = (Button) findViewById(R.id.button); //boton que activa el menu desplegable
-       // button2 = (Button) findViewById(R.id.button2); // botton para ir a las sugerencias
+
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,13 +106,6 @@ public class FeedCiudadano extends AppCompatActivity {
         //    }
         //});
 
-       // button2.setOnClickListener(new View.OnClickListener() {
-       //     @Override
-       //     public void onClick(View view) {
-       //         Intent i = new Intent(view.getContext(), Ayuda_y_sugerencias.class);//
-       //         startActivity(i);
-       //     }
-       // });
         //fin de codigo para menu desplegable
     }
 

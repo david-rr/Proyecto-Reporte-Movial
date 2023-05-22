@@ -37,7 +37,7 @@ public class FeedAdmin extends AppCompatActivity {
     ///codigo para menu desplegable
     DrawerLayout drawerLayout;
     Button button;
-    //Button button2; //boton para el signo de sugerencias
+    Button button2; //boton para el signo de sugerencias
     LinearLayout VisReportes, Cerrarsesion;
 
     FirebaseAuth firebaseAuth;
@@ -108,13 +108,14 @@ public class FeedAdmin extends AppCompatActivity {
         });
 
         //Boton que te dirige a la ayuda y sugerencias
-       // button2.setOnClickListener(new View.OnClickListener() {
-       //     @Override
-       //     public void onClick(View view) {
-       //         Intent i = new Intent(view.getContext(), Ayuda_y_sugerencias.class);//
-       //         startActivity(i);
-       //     }
-       // });
+        button2 = (Button) findViewById(R.id.button2); // botton para ir a las sugerencias
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               Intent i = new Intent(view.getContext(), SugerenciaLayout.class);//
+                startActivity(i);
+           }
+        });
         //Fin del boton que te lleva a ayuda y sugerencias
 
 
@@ -123,7 +124,7 @@ public class FeedAdmin extends AppCompatActivity {
         VisReportes = findViewById(R.id.VisReportes); //actividad Principal feed Admin
         Cerrarsesion = findViewById(R.id.Cerrarsesion);
         button = (Button) findViewById(R.id.button); //boton para desplegar el menu
-       // button2 = (Button) findViewById(R.id.button2); // botton para ir a las sugerencias
+
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
