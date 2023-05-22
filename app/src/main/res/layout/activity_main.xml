@@ -9,9 +9,9 @@
 
     <ImageView
         android:id="@+id/imagenFondo"
-        android:layout_width="410dp"
-        android:layout_height="328dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="411dp"
+        android:layout_height="330dp"
+        android:layout_marginTop="-3dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/descarga_fondo" />
@@ -77,7 +77,7 @@
         android:layout_marginTop="264dp"
         android:background="#FFFFFF"
         android:ems="10"
-        android:hint="Usuario"
+        android:hint="Correo electronico"
         android:inputType="text"
         android:paddingLeft="5dp"
         android:singleLine="false"
@@ -103,7 +103,7 @@
         android:id="@+id/btnPassForgetLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="420dp"
         android:background="@android:color/transparent"
         android:text="¿Olvidaste la contraseña?"
@@ -116,7 +116,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp" />
+        app:layout_constraintGuide_begin="21dp" />
 
     <Button
         android:id="@+id/btnRegistroLogin"
@@ -136,7 +136,7 @@
         android:layout_height="32dp"
         android:layout_marginStart="162dp"
         android:layout_marginTop="597dp"
-        android:text="O"
+        android:text="o"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
