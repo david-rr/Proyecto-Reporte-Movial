@@ -31,7 +31,7 @@ public class Agua extends AppCompatActivity {
     DrawerLayout drawerLayout;
     Button button;
     Button button2; //boton para el signo de sugerencias
-    LinearLayout VisReportes, Cerrarsesion;
+    LinearLayout VisReportes, Cerrarsesion, visSugerencias;
 
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
@@ -93,14 +93,14 @@ public class Agua extends AppCompatActivity {
         });
 
         //Boton que te dirige a sugerencias
-         button2 = (Button) findViewById(R.id.button2); // botton para ir a las sugerencias
-         button2.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View view) {
-                 Intent i = new Intent(view.getContext(), SugerenciaLayout.class);// Envia del activity actual a sugerencias
-                 startActivity(i);
-             }
-         });
+         //button2 = (Button) findViewById(R.id.button2); // botton para ir a las sugerencias
+         //button2.setOnClickListener(new View.OnClickListener() {
+          //   @Override
+           //  public void onClick(View view) {
+           //      Intent i = new Intent(view.getContext(), SugerenciaLayout.class);// Envia del activity actual a sugerencias
+           //      startActivity(i);
+           //  }
+         //});
         //Fin del boton que te lleva a ayuda y sugerencias
 
 
@@ -108,6 +108,7 @@ public class Agua extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout3);
         VisReportes = findViewById(R.id.VisReportes); //actividad Principal feed Admin
         Cerrarsesion = findViewById(R.id.Cerrarsesion);
+        visSugerencias = findViewById(R.id.visSugerencias); // texto que te lleva a las sugerencias
         button = (Button) findViewById(R.id.button); //boton para desplegar el menu
 
 
@@ -127,6 +128,13 @@ public class Agua extends AppCompatActivity {
                 Intent i = new Intent(view.getContext(), FeedAdmin.class);//te lleva del agua al feed de admin
                 startActivity(i);
 
+            }
+        });
+
+        visSugerencias.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                redirectActivity(Agua.this, SugerenciaLayout.class);
             }
         });
 
