@@ -348,7 +348,7 @@ public class Generar_Reporte extends AppCompatActivity implements OnMapReadyCall
         tipo1 = (RadioButton) findViewById(R.id.typeVialGR);
         tipo2 = (RadioButton) findViewById(R.id.typeAguaGR);
         tipo3 = (RadioButton) findViewById(R.id.typeAlumbradoGR);
-        tipo4 = (RadioButton) findViewById(R.id.typeAlumbradoGR);
+        tipo4 = (RadioButton) findViewById(R.id.typeArbolGR);
 
         if(tipo1.isChecked())
             tipo = tipo1.getText().toString();
