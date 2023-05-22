@@ -1,4 +1,5 @@
 package com.example.reportemovial;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -13,14 +14,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 public class miCuenta extends AppCompatActivity {
 
-    private TextView txt_name, txt_email, txt_address, txt_phone;
+    private TextView txt_name, txt_email, txt_user, txt_tipo;
     private Button Cerrar_sesion;
+    private FirebaseAuth mAuth;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();// Inicializar Firebase Firestore
 
     ///codigo para menu desplegable
@@ -34,17 +38,19 @@ public class miCuenta extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mi_cuenta);
-
+        mAuth = FirebaseAuth.getInstance();
         // Obtener referencias a los elementos del layout
         txt_name = findViewById(R.id.txt_name);
         txt_email = findViewById(R.id.txt_email);
-        txt_address = findViewById(R.id.txt_address);
-        txt_phone = findViewById(R.id.txt_phone);
+        txt_user = findViewById(R.id.txt_user);
+        txt_tipo = findViewById(R.id.txt_tipo);
         Cerrar_sesion = (Button) findViewById(R.id.exit_session);
 
         // Realizar la consulta a Firestore
-        db.collection("usuarios_registrados")
-                .document("ciudadano@gmail.com")
+
+                 FirebaseUser user = mAuth.getCurrentUser();
+                 db.collection("usuarios_registrados")
+                         .document(user.getEmail())
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -52,16 +58,16 @@ public class miCuenta extends AppCompatActivity {
                         if (document.exists()) {
                             // Obtener los datos del documento
                             String nombre = document.getString("nombre");
-                            String email = document.getString("email");
-                            String direccion = document.getString("address");
-                            String telefono = document.getString("telf");
+                            String email = user.getEmail();
+                            String usuario = document.getString("usuario");
+                            String Tipo = document.getString("tipo");
 
 
                             // Mostrar los datos en la interfaz de usuario
                             txt_name.setText(nombre);
                             txt_email.setText(email);
-                            txt_address.setText(direccion);
-                            txt_phone.setText(telefono);
+                            txt_user.setText(usuario);
+                            txt_tipo.setText(Tipo);
 
                         }
                     } else {
