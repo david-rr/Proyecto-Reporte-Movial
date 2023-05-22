@@ -7,13 +7,16 @@ public class Reporte {
     private String estado;
     private String imagen;
     private String tipo;
+
+    private String usuario;
     public Reporte(){}
 
-    public Reporte(String descripcion, String estado, String imagen, String tipo){
+    public Reporte(String descripcion, String estado, String imagen, String tipo, String usuario){
         this.descripcion = descripcion;
         this.estado = estado;
-        //this.imagen = imagen;
+        this.imagen = imagen;
         this.tipo = tipo;
+        this.usuario = usuario;
     }
 
     public String getDescripcion() {
@@ -43,5 +46,9 @@ public class Reporte {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    public String getUsuario(){return usuario;}
+
+    public void setUsuario(String usuario){this.usuario = usuario;}
 
 }

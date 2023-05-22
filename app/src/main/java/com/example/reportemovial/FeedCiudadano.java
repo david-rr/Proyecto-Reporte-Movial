@@ -25,6 +25,8 @@ public class FeedCiudadano extends AppCompatActivity {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+    Button generarReport;
+
     ///codigo para menu desplegable
     DrawerLayout drawerLayout;
     Button button; //boton para accionar el menu desplegable
@@ -59,6 +61,8 @@ public class FeedCiudadano extends AppCompatActivity {
             }
         });
 
+        generarReport = findViewById(R.id.generarReporte);
+
         //Fin de boton  que nos debe llevar a las sugerencias
 
         //Inicio Codigo para menu desplegable
@@ -68,6 +72,14 @@ public class FeedCiudadano extends AppCompatActivity {
         CrearReportes = findViewById(R.id.CrearReportes);
         MiCuenta = findViewById(R.id.MiCuenta);
         button = (Button) findViewById(R.id.button); //boton que activa el menu desplegable
+
+        generarReport.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(v.getContext(), Generar_Reporte.class);
+                startActivity(i);
+            }
+        });
 
 
         button.setOnClickListener(new View.OnClickListener() {
