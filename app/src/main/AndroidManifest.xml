@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,6 +17,47 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ReporteMovial"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAVA-d1BcLYNhbLh_JlzkCf_fugtoj6_sU" />
+
+        <activity
+            android:name=".Generar_Reporte"
+            android:exported="false" />
+        <activity
+            android:name=".SignUp"
+            android:exported="false" />
+        <activity
+            android:name=".FeedCiudadano"
+            android:exported="false" />
+        <activity
+            android:name=".FeedAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".miCuenta"
+            android:exported="false" />
+        <activity
+            android:name=".mis_reportes"
+            android:exported="false" />
+        <activity
+            android:name=".Vial"
+            android:exported="false" />
+        <activity
+            android:name=".Agua"
+            android:exported="false"/>
+        <activity
+            android:name=".Alumbrado"
+            android:exported="false"/>
+        <activity
+            android:name=".Arbol"
+            android:exported="false"/>
+        <activity
+            android:name=".Ayuda_y_sugerencias"
+            android:exported="false"/>
+        <activity
+            android:name=".SugerenciaLayout"
+            android:exported="false"/>
         <activity
             android:name=".Login"
             android:exported="true">

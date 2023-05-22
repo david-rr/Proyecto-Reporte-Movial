@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "821625724480",
+    "project_id": "reporte-movial",
+    "storage_bucket": "reporte-movial.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:821625724480:android:3f95b8b1bb7acf8886c9a5",
+        "android_client_info": {
+          "package_name": "com.example.reportemovial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "821625724480-6oa13rhojcfb70363vg59den4qukuqdj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSlFtEwQA1SCvEsDkt4peUAJ2war9ZKN4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "821625724480-6oa13rhojcfb70363vg59den4qukuqdj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

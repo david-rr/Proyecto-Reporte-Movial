@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/drawer_layout6"
+    tools:context=".Vial">
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".Vial">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="414dp"
+        android:layout_height="93dp"
+        android:layout_marginBottom="667dp"
+        android:background="#7A1818"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="178dp"
+        android:layout_marginBottom="20dp"
+        android:text="Puebla"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="@id/toolbar" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="Seguridad Mo-vial"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="@id/toolbar"
+        app:layout_constraintTop_toTopOf="@id/toolbar" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="75dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:background="@color/cardview_shadow_end_color"
+        android:text="ayuda"
+        app:icon="@drawable/interrogacion_icono_hd"
+        app:iconSize="45dp"
+        app:iconTint="#000000"
+        app:layout_constraintEnd_toEndOf="@id/toolbar"
+        app:layout_constraintTop_toTopOf="@id/toolbar" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="75dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/cardview_shadow_end_color"
+        android:text=" "
+        app:icon="@drawable/icons_menu"
+        app:iconSize="35dp"
+        app:iconTint="@color/black"
+        app:layout_constraintStart_toStartOf="@id/toolbar"
+        app:layout_constraintTop_toTopOf="@id/toolbar" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="414dp"
+        android:layout_height="75dp"
+        android:background="#CCCCCC"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerReportVial"
+        android:layout_width="match_parent"
+        android:layout_height="630dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="10dp"
+        android:padding="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/FiltroPrioridad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="6dp"
+        android:background="@color/white"
+        app:backgroundTint="@null"
+        android:text="Prioridad"
+        android:textColor="#FF000000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/toolbar2"
+        app:layout_constraintStart_toStartOf="@id/toolbar2"
+        app:layout_constraintTop_toTopOf="@id/toolbar2" />
+
+    <Button
+        android:id="@+id/FiltroAgua"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        app:backgroundTint="@null"
+        android:text="Agua"
+        android:textColor="#FF000000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/toolbar2"
+        app:layout_constraintStart_toEndOf="@id/FiltroPrioridad"
+        app:layout_constraintTop_toTopOf="@id/toolbar2"/>
+
+    <Button
+        android:id="@+id/FiltroAlumbrado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        app:backgroundTint="@null"
+        android:text="Alumbrado"
+        android:textColor="#FF000000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/toolbar2"
+        app:layout_constraintStart_toEndOf="@id/FiltroAgua"
+        app:layout_constraintTop_toTopOf="@id/toolbar2"/>
+
+    <Button
+        android:id="@+id/FiltroArbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        app:backgroundTint="@null"
+        android:text="Árbol"
+        android:textColor="#FF000000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/toolbar2"
+        app:layout_constraintStart_toEndOf="@id/FiltroAlumbrado"
+        app:layout_constraintTop_toTopOf="@id/toolbar2"/>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Filtros para muestra de reportes"
+        app:layout_constraintEnd_toEndOf="@id/toolbar2"
+        app:layout_constraintStart_toStartOf="@id/toolbar2"
+        app:layout_constraintTop_toTopOf="@id/toolbar2"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:layout_gravity="start">
+
+        <include
+            layout="@layout/nav_drawer2"/>
+
+    </RelativeLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>
