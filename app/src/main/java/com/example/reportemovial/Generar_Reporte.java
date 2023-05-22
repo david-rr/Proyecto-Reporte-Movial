@@ -230,11 +230,12 @@ public class Generar_Reporte extends AppCompatActivity implements OnMapReadyCall
                             finish();
                         }
                     })
-                    .setTitle("Generar Reporte") // El título
+                    .setTitle("Problema en tu sesion") // El título
                     .setMessage("Error al enviar reporte.\nDebes iniciar sesion nuevamente.") // El mensaje
                     .create();// No olvides llamar a Create, ¡pues eso crea el AlertDialog!
             dialogo.show(); return false;
         }
+        seleccionRB();
         String description = txtdesc.getText().toString();
         if ( description.isEmpty() ) { txtdesc.setError("El campo no puede ir vacio"); return false; }
         if ( description.length() > 200 ) { txtdesc.setError("Debe ser menor a 200 caracteres"); return false; }
@@ -245,7 +246,7 @@ public class Generar_Reporte extends AppCompatActivity implements OnMapReadyCall
                     public void onClick(DialogInterface dialog, int which) {
                     }
                 })
-                .setTitle("Generar Reporte") // El título
+                .setTitle("Error en el tipo de reporte") // El título
                 .setMessage("Selecciona un tipo de reporte.") // El mensaje
                 .create();// No olvides llamar a Create, ¡pues eso crea el AlertDialog!
             dialogo.show(); return false; }
@@ -256,7 +257,7 @@ public class Generar_Reporte extends AppCompatActivity implements OnMapReadyCall
                     public void onClick(DialogInterface dialog, int which) {
                     }
                 })
-                .setTitle("Generar Reporte") // El título
+                .setTitle("Error en la ubicacion") // El título
                 .setMessage("Obten tu ubicacion o selecciona una en el mapa.") // El mensaje
                 .create();// No olvides llamar a Create, ¡pues eso crea el AlertDialog!
             dialogo.show(); return false; }
@@ -267,7 +268,7 @@ public class Generar_Reporte extends AppCompatActivity implements OnMapReadyCall
                     public void onClick(DialogInterface dialog, int which) {
                     }
                 })
-                .setTitle("Generar Reporte") // El título
+                .setTitle("Error en la foto") // El título
                 .setMessage("Selecciona una foto o capturala desde la camara.") // El mensaje
                 .create();// No olvides llamar a Create, ¡pues eso crea el AlertDialog!
             dialogo.show(); return false; }
@@ -277,7 +278,6 @@ public class Generar_Reporte extends AppCompatActivity implements OnMapReadyCall
     }
 
     protected void enviarReporte(View v){
-        seleccionRB();
         String img = enviarImagen();
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 

@@ -5,12 +5,15 @@ import static android.content.ContentValues.TAG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -32,9 +35,9 @@ public class Login extends AppCompatActivity {
     private Button btnIniciar;
     private Button btnRegistro;
     int b = 0;
+    private ProgressDialog mDialog;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,7 @@ public class Login extends AppCompatActivity {
         btnOlvidar = (Button) findViewById(R.id.btnPassForgetLogin);
         btnIniciar = (Button) findViewById(R.id.btnIniciarLogin);
         btnRegistro = (Button) findViewById(R.id.btnRegistroLogin);
+        mDialog = new ProgressDialog(this);
 
         btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,8 +63,7 @@ public class Login extends AppCompatActivity {
         btnOlvidar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(v.getContext(), mis_reportes.class);//crear ventana de recuperacion de contraseña
-                startActivity(i);
+                recuperarPass();
             }
         });
 
@@ -73,6 +76,51 @@ public class Login extends AppCompatActivity {
         });
 
 
+    }
+
+    private void recuperarPass() {
+        final Dialog dialogPersonalizado = new Dialog(Login.this);
+        dialogPersonalizado.setContentView(R.layout.recuperar_contra);
+        // Podemos obtener los elementos dentro del layout ;)
+        Button btnAlertaPasswordOk = dialogPersonalizado.findViewById(R.id.btnAlertaPasswordEnviar);
+        btnAlertaPasswordOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText emailRec = dialogPersonalizado.findViewById(R.id.emailRecoverPass);
+                String email = emailRec.getText().toString();
+                if ( email.isEmpty() ) emailRec.setError("Ingresa un correo.");
+                else {
+                    mDialog.setMessage("Espere un momento...");
+                    mDialog.setCanceledOnTouchOutside(false);
+                    mDialog.show();
+                    mAuth.setLanguageCode("es");
+                    mAuth.sendPasswordResetEmail(email)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Log.d(TAG, "Email sent.");
+                                        Toast.makeText(Login.this, "Se ha enviado un correo para reestablecer tu contraseña", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(Login.this, "No se pudo enviar el correo de reestablecimiento", Toast.LENGTH_SHORT).show();
+                                    }
+                                    mDialog.dismiss();
+                                    dialogPersonalizado.dismiss();
+                                }
+                            });
+                }
+            }
+        });
+        Button btnAlertaPasswordCancel = dialogPersonalizado.findViewById(R.id.btnAlertaPasswordCancelar);
+        btnAlertaPasswordCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                  dialogPersonalizado.dismiss();
+            }
+        });
+
+        // Después mostrarla:
+        dialogPersonalizado.show();
     }
 
     private boolean validarEmailPass(){
@@ -90,6 +138,9 @@ public class Login extends AppCompatActivity {
 
     private void iniciarSesion(String email, String password){
 
+        mDialog.setMessage("Espere un momento...");
+        mDialog.setCanceledOnTouchOutside(false);
+        mDialog.show();
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -116,14 +167,17 @@ public class Login extends AppCompatActivity {
                                                     Intent i = new Intent(Login.this, FeedCiudadano.class);
                                                     startActivity(i);
                                                 }
+                                                mDialog.dismiss();
                                             } else {
                                                 System.out.println("Error al recuperar");
+                                                mDialog.dismiss();
                                             }
                                         }
                                     });
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(Login.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                            mDialog.dismiss();
                         }
                     }
                 });
