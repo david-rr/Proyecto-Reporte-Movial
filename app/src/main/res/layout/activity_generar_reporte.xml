@@ -7,10 +7,7 @@
     android:id="@+id/drawer_layout8"
     tools:context=".Generar_Reporte">
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:map="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Generar_Reporte">
@@ -141,7 +138,8 @@
                         android:id="@+id/typeVialGR"
                         android:layout_width="167dp"
                         android:layout_height="30dp"
-                        android:text="Vial" />
+                        android:text="Vial"
+                        android:checked="true" />
 
                     <RadioButton
                         android:id="@+id/typeAguaGR"
@@ -236,9 +234,9 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView3"
-                map:cameraZoom="15"
-                map:uiRotateGestures="true"
-                map:uiZoomControls="true" />
+                app:cameraZoom="15"
+                app:uiRotateGestures="true"
+                app:uiZoomControls="true" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -306,6 +304,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btnCargarFGenerarR" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="TextView"
+                android:enabled="false"/>
+
 
         </LinearLayout>
     </ScrollView>

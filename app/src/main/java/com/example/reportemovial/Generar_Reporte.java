@@ -2,6 +2,7 @@ package com.example.reportemovial;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -9,6 +10,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -39,6 +41,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -67,12 +71,13 @@ public class Generar_Reporte extends AppCompatActivity implements OnMapReadyCall
     private Button btnCargarFoto;
     private Button btnEnviar;
     private ImageView foto;
-    private LatLng point;
+    private LatLng point = null;
     private FusedLocationProviderClient ubicacion;
 
     private GoogleMap nMap;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+    private boolean banderaFoto = false;
     private static final String TAG = "GenerarReporte";
 
     ///codigo para menu desplegable
@@ -144,7 +149,8 @@ public class Generar_Reporte extends AppCompatActivity implements OnMapReadyCall
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                enviarReporte(v);
+                if ( validarCampos() )
+                    enviarReporte(v);
             }
         });
 
@@ -163,9 +169,9 @@ public class Generar_Reporte extends AppCompatActivity implements OnMapReadyCall
         //Inicio Codigo para menu desplegable
         drawerLayout = findViewById(R.id.drawer_layout8);
         VisReportes = findViewById(R.id.VisReportes); //actividad Principal feed ciudadano
-        //MisReportes = findViewById(R.id.MisReportes);
+        MisReportes = findViewById(R.id.MisReportes);
         CrearReportes = findViewById(R.id.CrearReportes);
-        //MiCuenta = findViewById(R.id.MiCuenta);
+        MiCuenta = findViewById(R.id.MiCuenta);
         button = (Button) findViewById(R.id.button); //boton que activa el menu desplegable
 
 
@@ -193,27 +199,87 @@ public class Generar_Reporte extends AppCompatActivity implements OnMapReadyCall
             }
         });
 
-        //MisReportes.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View view) {
-        //        redirectActivity(FeedCiudadano.this, MisReportes.class);
-        //    }
-        //});
+        MisReportes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                redirectActivity(Generar_Reporte.this, mis_reportes.class);
+            }
+        });
 
-        //MiCuenta.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View view) {
-        //        redirectActivity(FeedCiudadano.this, MisReportes.class);
-        //    }
-        //});
+        MiCuenta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                redirectActivity(Generar_Reporte.this, miCuenta.class);
+            }
+        });
 
         //fin de codigo para menu desplegable
 
     }
 
+    private boolean validarCampos() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+            AlertDialog dialogo = new AlertDialog
+                    .Builder(Generar_Reporte.this) // NombreDeTuActividad.this, o getActivity() si es dentro de un fragmento
+                    .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent i = new Intent(Generar_Reporte.this, Login.class);
+                            startActivity(i);
+                            finish();
+                        }
+                    })
+                    .setTitle("Generar Reporte") // El título
+                    .setMessage("Error al enviar reporte.\nDebes iniciar sesion nuevamente.") // El mensaje
+                    .create();// No olvides llamar a Create, ¡pues eso crea el AlertDialog!
+            dialogo.show(); return false;
+        }
+        String description = txtdesc.getText().toString();
+        if ( description.isEmpty() ) { txtdesc.setError("El campo no puede ir vacio"); return false; }
+        if ( description.length() > 200 ) { txtdesc.setError("Debe ser menor a 200 caracteres"); return false; }
+        if ( tipo.isEmpty() ) { AlertDialog dialogo = new AlertDialog
+                .Builder(Generar_Reporte.this) // NombreDeTuActividad.this, o getActivity() si es dentro de un fragmento
+                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                })
+                .setTitle("Generar Reporte") // El título
+                .setMessage("Selecciona un tipo de reporte.") // El mensaje
+                .create();// No olvides llamar a Create, ¡pues eso crea el AlertDialog!
+            dialogo.show(); return false; }
+        if ( point == null ) { AlertDialog dialogo = new AlertDialog
+                .Builder(Generar_Reporte.this) // NombreDeTuActividad.this, o getActivity() si es dentro de un fragmento
+                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                })
+                .setTitle("Generar Reporte") // El título
+                .setMessage("Obten tu ubicacion o selecciona una en el mapa.") // El mensaje
+                .create();// No olvides llamar a Create, ¡pues eso crea el AlertDialog!
+            dialogo.show(); return false; }
+        if ( banderaFoto == false ) { AlertDialog dialogo = new AlertDialog
+                .Builder(Generar_Reporte.this) // NombreDeTuActividad.this, o getActivity() si es dentro de un fragmento
+                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                })
+                .setTitle("Generar Reporte") // El título
+                .setMessage("Selecciona una foto o capturala desde la camara.") // El mensaje
+                .create();// No olvides llamar a Create, ¡pues eso crea el AlertDialog!
+            dialogo.show(); return false; }
+
+        txtdesc.setError(null);
+        return true;
+    }
+
     protected void enviarReporte(View v){
         seleccionRB();
         String img = enviarImagen();
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
         Map<String, Object> user = new HashMap<>();
         user.put("tipo", tipo);
@@ -221,6 +287,7 @@ public class Generar_Reporte extends AppCompatActivity implements OnMapReadyCall
         user.put("imagen", img);
         user.put("ubicacion", point);
         user.put("estado", "Pendiente");
+        user.put("usuario", currentUser.getEmail());
 
 
         // Add a new document with a generated ID
@@ -230,9 +297,21 @@ public class Generar_Reporte extends AppCompatActivity implements OnMapReadyCall
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                        Intent i = new Intent(v.getContext(), FeedCiudadano.class);
-                        startActivity(i);
-                        finish();
+
+                        AlertDialog dialogo = new AlertDialog
+                                .Builder(Generar_Reporte.this) // NombreDeTuActividad.this, o getActivity() si es dentro de un fragmento
+                                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent i = new Intent(v.getContext(), FeedCiudadano.class);
+                                        startActivity(i);
+                                        finish();
+                                    }
+                                })
+                                .setTitle("Generar Reporte") // El título
+                                .setMessage("El reporte se ha enviado exitosamente.") // El mensaje
+                                .create();// No olvides llamar a Create, ¡pues eso crea el AlertDialog!
+                        dialogo.show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -250,11 +329,13 @@ public class Generar_Reporte extends AppCompatActivity implements OnMapReadyCall
         if( resultCode == RESULT_OK ){
             Uri path = data.getData();
             foto.setImageURI(path);
+            banderaFoto = true;
         }
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             foto.setImageBitmap(imageBitmap);
+            banderaFoto = true;
         }
     }
 
