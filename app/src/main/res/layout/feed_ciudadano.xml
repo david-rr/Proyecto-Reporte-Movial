@@ -88,7 +88,7 @@
         app:layout_constraintTop_toTopOf="@id/toolbar" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/generarReporte"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="112dp"
@@ -107,7 +107,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginBottom="50dp"
         android:padding="3dp"
-        app:layout_constraintBottom_toTopOf="@id/button4"
+        app:layout_constraintBottom_toTopOf="@id/generarReporte"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar">
