@@ -47,6 +47,12 @@
             android:name=".Arbol"
             android:exported="false"/>
         <activity
+            android:name=".Ayuda_y_sugerencias"
+            android:exported="false"/>
+        <activity
+            android:name=".SugerenciaLayout"
+            android:exported="false"/>
+        <activity
             android:name=".Login"
             android:exported="true">
             <intent-filter>
