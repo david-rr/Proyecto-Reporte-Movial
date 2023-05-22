@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -63,9 +64,9 @@ public class FeedCiudadano extends AppCompatActivity {
         //Inicio Codigo para menu desplegable
         drawerLayout = findViewById(R.id.drawer_layout);
         VisReportes = findViewById(R.id.VisReportes); //actividad Principal feed ciudadano
-        //MisReportes = findViewById(R.id.MisReportes);
+        MisReportes = findViewById(R.id.MisReportes);
         CrearReportes = findViewById(R.id.CrearReportes);
-        //MiCuenta = findViewById(R.id.MiCuenta);
+        MiCuenta = findViewById(R.id.MiCuenta);
         button = (Button) findViewById(R.id.button); //boton que activa el menu desplegable
 
 
@@ -79,8 +80,8 @@ public class FeedCiudadano extends AppCompatActivity {
         VisReportes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 recreate();
+                Toast.makeText(FeedCiudadano.this, "Usted está en los reportes", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -92,19 +93,19 @@ public class FeedCiudadano extends AppCompatActivity {
             }
         });
 
-        //MisReportes.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View view) {
-        //        redirectActivity(FeedCiudadano.this, MisReportes.class);
-        //    }
-        //});
+        MisReportes.setOnClickListener(new View.OnClickListener() {
+            @Override
+           public void onClick(View view) {
+                redirectActivity(FeedCiudadano.this, mis_reportes.class);
+            }
+        });
 
-        //MiCuenta.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View view) {
-        //        redirectActivity(FeedCiudadano.this, MisReportes.class);
-        //    }
-        //});
+        MiCuenta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                redirectActivity(FeedCiudadano.this, miCuenta.class);
+            }
+        });
 
         //fin de codigo para menu desplegable
     }

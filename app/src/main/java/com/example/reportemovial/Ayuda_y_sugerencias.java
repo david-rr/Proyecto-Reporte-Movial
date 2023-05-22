@@ -64,7 +64,9 @@ public class Ayuda_y_sugerencias extends AppCompatActivity {
          button2.setOnClickListener(new View.OnClickListener() {
             @Override
              public void onClick(View view) {
+
                 recreate();
+                Toast.makeText(Ayuda_y_sugerencias.this, "Usted está en ayuda y sugerencias", Toast.LENGTH_SHORT).show();
             }
          });
 
@@ -74,9 +76,9 @@ public class Ayuda_y_sugerencias extends AppCompatActivity {
         //Inicio Codigo para menu desplegable
         drawerLayout = findViewById(R.id.drawer_layout7);
         VisReportes = findViewById(R.id.VisReportes); //actividad Principal feed ciudadano
-        //MisReportes = findViewById(R.id.MisReportes);
+        MisReportes = findViewById(R.id.MisReportes);
         CrearReportes = findViewById(R.id.CrearReportes);
-        //MiCuenta = findViewById(R.id.MiCuenta);
+        MiCuenta = findViewById(R.id.MiCuenta);
         button = (Button) findViewById(R.id.button); //boton que activa el menu desplegable
 
 
@@ -103,20 +105,19 @@ public class Ayuda_y_sugerencias extends AppCompatActivity {
             }
         });
 
-        //MisReportes.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View view) {
-        //        redirectActivity(FeedCiudadano.this, MisReportes.class);
-        //    }
-        //});
+        MisReportes.setOnClickListener(new View.OnClickListener() {
+           @Override
+            public void onClick(View view) {
+                redirectActivity(Ayuda_y_sugerencias.this, mis_reportes.class);
+           }
+        });
 
-        //MiCuenta.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View view) {
-        //        redirectActivity(FeedCiudadano.this, MisReportes.class);
-        //    }
-        //});
-
+        MiCuenta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                redirectActivity(Ayuda_y_sugerencias.this, miCuenta.class);
+            }
+        });
         //fin de codigo para menu desplegable
 
     }
