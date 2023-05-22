@@ -60,19 +60,6 @@
         app:layout_constraintStart_toStartOf="@id/toolbar"
         app:layout_constraintTop_toTopOf="@id/toolbar" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="75dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="15dp"
-        android:background="@color/cardview_shadow_end_color"
-        android:text="ayuda"
-        app:icon="@drawable/interrogacion_icono_hd"
-        app:iconSize="45dp"
-        app:iconTint="#000000"
-        app:layout_constraintEnd_toEndOf="@id/toolbar"
-        app:layout_constraintTop_toTopOf="@id/toolbar" />
 
     <Button
         android:id="@+id/button"

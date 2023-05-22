@@ -37,8 +37,8 @@ public class FeedAdmin extends AppCompatActivity {
     ///codigo para menu desplegable
     DrawerLayout drawerLayout;
     Button button;
-    Button button2; //boton para el signo de sugerencias
-    LinearLayout VisReportes, Cerrarsesion;
+    //Button button2; //boton para el signo de sugerencias
+    LinearLayout VisReportes, visSugerencias, Cerrarsesion;
 
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
@@ -108,20 +108,21 @@ public class FeedAdmin extends AppCompatActivity {
         });
 
         //Boton que te dirige a la ayuda y sugerencias
-        button2 = (Button) findViewById(R.id.button2); // botton para ir a las sugerencias
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               Intent i = new Intent(view.getContext(), SugerenciaLayout.class);//
-                startActivity(i);
-           }
-        });
+        //button2 = (Button) findViewById(R.id.button2); // botton para ir a las sugerencias
+        //button2.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View view) {
+        //       Intent i = new Intent(view.getContext(), SugerenciaLayout.class);//
+        //        startActivity(i);
+        //   }
+        //});
         //Fin del boton que te lleva a ayuda y sugerencias
 
 
         //Inicio Codigo para menu desplegable
         drawerLayout = findViewById(R.id.drawer_layout2);
         VisReportes = findViewById(R.id.VisReportes); //actividad Principal feed Admin
+        visSugerencias = findViewById(R.id.visSugerencias); // texto que te lleva a las sugerencias
         Cerrarsesion = findViewById(R.id.Cerrarsesion);
         button = (Button) findViewById(R.id.button); //boton para desplegar el menu
 
@@ -139,7 +140,15 @@ public class FeedAdmin extends AppCompatActivity {
         VisReportes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(FeedAdmin.this, "Usted está en los reportes", Toast.LENGTH_SHORT).show();
                 recreate();
+            }
+        });
+
+        visSugerencias.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                redirectActivity(FeedAdmin.this, SugerenciaLayout.class);
             }
         });
 
@@ -150,9 +159,6 @@ public class FeedAdmin extends AppCompatActivity {
                 CerrarSession();
             }
         });
-
-
-
         //fin Codigo para menu desplegable
 
     }
