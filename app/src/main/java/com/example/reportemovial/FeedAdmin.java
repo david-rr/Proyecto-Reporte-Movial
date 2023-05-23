@@ -167,6 +167,7 @@ public class FeedAdmin extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         ReportAdapter.startListening();
+        ReportAdapter.stopListening();
         auxTot = Resumen.getTotal();
         totReport.setText(String.valueOf(auxTot));
         auxPendiente = Resumen.getPendiente();
@@ -188,7 +189,7 @@ public class FeedAdmin extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        ReportAdapter.stopListening();
+
     }
 
     //codigo para menu desplegable
