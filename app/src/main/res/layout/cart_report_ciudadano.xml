@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:text=" Título del reporte"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="20sp"
+            android:textSize="26sp"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -42,10 +42,19 @@
                 android:id="@+id/descripcion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="Descripción del reporte escrita por el ciudadano"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
         </LinearLayout>
+        <TextView
+            android:id="@+id/direccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dirección del reporte"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="16sp"
+            android:layout_marginTop="4dp"/>
     </LinearLayout>
 
 

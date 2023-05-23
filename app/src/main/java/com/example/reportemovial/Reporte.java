@@ -1,22 +1,26 @@
 package com.example.reportemovial;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.Date;
+import java.util.Map;
 
 public class Reporte {
     private String descripcion;
     private String estado;
     private String imagen;
     private String tipo;
-
+    private Map<String, Object> ubicacion;
     private String usuario;
     public Reporte(){}
 
-    public Reporte(String descripcion, String estado, String imagen, String tipo, String usuario){
+    public Reporte(String descripcion, String estado, String imagen, String tipo, String usuario, Map<String, Object>ubicacion){
         this.descripcion = descripcion;
         this.estado = estado;
         this.imagen = imagen;
         this.tipo = tipo;
         this.usuario = usuario;
+        this.ubicacion = ubicacion;
     }
 
     public String getDescripcion() {
@@ -51,4 +55,11 @@ public class Reporte {
 
     public void setUsuario(String usuario){this.usuario = usuario;}
 
+    public Map<String, Object> getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(Map<String, Object> ubicacion) {
+        this.ubicacion = ubicacion;
+    }
 }

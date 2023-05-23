@@ -6,6 +6,9 @@ import static com.example.reportemovial.FeedAdmin.Resumen;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.Address;
+import android.location.Geocoder;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,8 +30,11 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class ReporteAdapter extends FirestoreRecyclerAdapter<Reporte, ReporteAdapter.ViewHolder> {
@@ -80,6 +86,8 @@ public class ReporteAdapter extends FirestoreRecyclerAdapter<Reporte, ReporteAda
             }
         });
 
+        asignarDireccion(holder, position, Reporte);
+
         StorageReference islandRef = storageRef.child("images/"+Reporte.getImagen());
 
         final long ONE_MEGABYTE = 1024 * 1024;
@@ -117,6 +125,17 @@ public class ReporteAdapter extends FirestoreRecyclerAdapter<Reporte, ReporteAda
         Resumen.setArbol(auxArbol);
     }
 
+    private void asignarDireccion(ViewHolder holder, int position, Reporte reporte) {
+        Geocoder geocoder = new Geocoder(mContext.getApplicationContext(), Locale.getDefault());
+        try {
+            Log.e("Latitud: ", +(double)reporte.getUbicacion().get("latitude")+" Longitud: "+(double)reporte.getUbicacion().get("longitude"));
+            List<Address> direction = geocoder.getFromLocation((double)reporte.getUbicacion().get("latitude"), (double)reporte.getUbicacion().get("longitude"), 1);
+            if ( direction.size() > 0 )
+                holder.TextViewDir.setText(direction.get(0).getAddressLine(0));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     private void activarEstado(ViewHolder holder, int position, String estado) {
         if(estado.equals("Pendiente"))
@@ -138,6 +157,7 @@ public class ReporteAdapter extends FirestoreRecyclerAdapter<Reporte, ReporteAda
         TextView TextViewTitulo;
         TextView TextViewDescripcion;
         ImageView ImageViewEvidencia;
+        TextView TextViewDir;
         RadioGroup RadioGroupEstado;
         RadioButton pendiente, progreso, atendido;
 
@@ -147,6 +167,7 @@ public class ReporteAdapter extends FirestoreRecyclerAdapter<Reporte, ReporteAda
             TextViewTitulo = itemView.findViewById(R.id.titulo);
             TextViewDescripcion = itemView.findViewById(R.id.descripcion);
             ImageViewEvidencia = itemView.findViewById(R.id.ImagenReporte);
+            TextViewDir = itemView.findViewById(R.id.direccion);
             RadioGroupEstado = itemView.findViewById(R.id.Estado);
             pendiente = itemView.findViewById(R.id.pendienteEstadoCart);
             progreso = itemView.findViewById(R.id.progresoEstadoCart);
