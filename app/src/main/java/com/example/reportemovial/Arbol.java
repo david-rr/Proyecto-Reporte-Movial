@@ -51,7 +51,7 @@ public class Arbol extends AppCompatActivity {
         RecyclerViewArbol = findViewById(R.id.RecyclerReportArbol);
         RecyclerViewArbol.setLayoutManager(new LinearLayoutManager(this));
 
-        Query query = db.collection("reportes").whereEqualTo("tipo", "Árbol Caído");
+        Query query = db.collection("reportes").whereEqualTo("tipo", "Arbol Caido");
 
         FirestoreRecyclerOptions<Reporte> firestoreRecyclerOptionsVial = new FirestoreRecyclerOptions.Builder<Reporte>()
                 .setQuery(query, Reporte.class).build();
