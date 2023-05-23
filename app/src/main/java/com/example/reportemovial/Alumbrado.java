@@ -31,7 +31,7 @@ public class Alumbrado extends AppCompatActivity {
     DrawerLayout drawerLayout;
     Button button;
     Button button2; //boton para el signo de sugerencias
-    LinearLayout VisReportes, Cerrarsesion;
+    LinearLayout VisReportes, visSugerencias, Cerrarsesion;
 
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
@@ -93,21 +93,21 @@ public class Alumbrado extends AppCompatActivity {
         });
 
         //Boton que te dirige a  sugerencias
-         button2 = (Button) findViewById(R.id.button2); // botton para ir a las sugerencias
-
-        button2.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View view) {
-                 Intent i = new Intent(view.getContext(), SugerenciaLayout.class);//
-                startActivity(i);
-             }
-         });
+        // button2 = (Button) findViewById(R.id.button2); // botton para ir a las sugerencias
+       // button2.setOnClickListener(new View.OnClickListener() {
+        //     @Override
+       //      public void onClick(View view) {
+        //         Intent i = new Intent(view.getContext(), SugerenciaLayout.class);//
+        //        startActivity(i);
+       //      }
+       //  });
         //Fin del boton que te lleva a ayuda y sugerencias
 
 
         //Inicio Codigo para menu desplegable
         drawerLayout = findViewById(R.id.drawer_layout4);
         VisReportes = findViewById(R.id.VisReportes); //actividad Principal feed Admin
+        visSugerencias = findViewById(R.id.visSugerencias); // texto que te lleva a las sugerencias
         Cerrarsesion = findViewById(R.id.Cerrarsesion);
         button = (Button) findViewById(R.id.button); //boton para desplegar el menu
 
@@ -129,6 +129,14 @@ public class Alumbrado extends AppCompatActivity {
 
             }
         });
+
+        visSugerencias.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                redirectActivity(Alumbrado.this, SugerenciaLayout.class);
+            }
+        });
+
 
 
         Cerrarsesion.setOnClickListener(new View.OnClickListener() {

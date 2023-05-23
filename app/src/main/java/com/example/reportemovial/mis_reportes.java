@@ -14,6 +14,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -28,15 +30,17 @@ public class mis_reportes extends AppCompatActivity {
     Button button2; //boton para las sugerencias
     LinearLayout VisReportes, MisReportes, CrearReportes, MiCuenta;
     //fin de codigo para menu
-
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mis_reportes);
+        mAuth = FirebaseAuth.getInstance();
         RecyclerViewReporte = findViewById(R.id.RecyclerReportAdmin);
         RecyclerViewReporte.setLayoutManager(new LinearLayoutManager(this));
-        Query query = db.collection("reportes");
+        FirebaseUser user = mAuth.getCurrentUser();
+        Query query = db.collection("reportes").whereEqualTo("usuario", user.getEmail());
         FirestoreRecyclerOptions<Reporte> firestoreRecyclerOptions = new FirestoreRecyclerOptions.Builder<Reporte>()
                 .setQuery(query, Reporte.class).build();
         ReportAdapter = new ReporteAdapter(firestoreRecyclerOptions, mis_reportes.this);
@@ -62,6 +66,9 @@ public class mis_reportes extends AppCompatActivity {
         CrearReportes = findViewById(R.id.CrearReportes);
         MiCuenta = findViewById(R.id.MiCuenta);
         button = (Button) findViewById(R.id.button); //boton que activa el menu desplegable
+
+
+
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
