@@ -78,8 +78,8 @@ public class SignUp extends AppCompatActivity {
         String pass = txtPass.getText().toString();
         String passC = txtPassConf.getText().toString();
         if ( pass.isEmpty() ){ txtPass.setError("El campo no puede ir vacio"); return false; }
-        if ( passC.isEmpty() ){ txtPassConf.setError("El campo no puede ir vacio"); return false; }
         if ( pass.length() < 8 ) { txtPass.setError("Debe tener al menos 8 caracteres"); return false; }
+        if ( passC.isEmpty() ){ txtPassConf.setError("El campo no puede ir vacio"); return false; }
         if ( passC.length() < 8 ) { txtPassConf.setError("Debe tener al menos 8 caracteres"); return false; }
         if ( !passC.equals(pass) ) { txtPassConf.setError("Las contraseñas no coinciden"); return false; }
         txtPass.setError(null);
