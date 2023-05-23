@@ -77,13 +77,11 @@ public class SignUp extends AppCompatActivity {
     private boolean validarPass(){
         String pass = txtPass.getText().toString();
         String passC = txtPassConf.getText().toString();
-
         if ( pass.isEmpty() ){ txtPass.setError("El campo no puede ir vacio"); return false; }
         if ( passC.isEmpty() ){ txtPassConf.setError("El campo no puede ir vacio"); return false; }
         if ( pass.length() < 8 ) { txtPass.setError("Debe tener al menos 8 caracteres"); return false; }
         if ( passC.length() < 8 ) { txtPassConf.setError("Debe tener al menos 8 caracteres"); return false; }
         if ( !passC.equals(pass) ) { txtPassConf.setError("Las contraseñas no coinciden"); return false; }
-
         txtPass.setError(null);
         txtPassConf.setError(null);
         return true;
@@ -91,10 +89,8 @@ public class SignUp extends AppCompatActivity {
 
     private boolean validarEmail(){
         String email = txtCorreo.getText().toString().trim();
-
         if ( email.isEmpty() ) { txtCorreo.setError("El campo no puede ir vacio"); return false; }
         if ( !Patterns.EMAIL_ADDRESS.matcher(email).matches() ) { txtCorreo.setError("Ingresa un correo valido"); return false; }
-
         txtCorreo.setError(null);
         return true;
     }
@@ -102,10 +98,8 @@ public class SignUp extends AppCompatActivity {
     private boolean validarCampos() {
         String nombre = txtNom.getText().toString();
         String user = txtUser.getText().toString();
-
         if ( nombre.isEmpty() ) { txtNom.setError("El campo no puede ir vacio"); return false; }
         if ( user.isEmpty() ) { txtUser.setError("El campo no puede ir vacio"); return false; }
-
         txtNom.setError(null);
         txtUser.setError(null);
         return true;

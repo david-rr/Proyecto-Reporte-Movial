@@ -21,7 +21,7 @@ import com.google.firebase.firestore.Query;
 
 public class mis_reportes extends AppCompatActivity {
     private RecyclerView RecyclerViewReporte ;
-    private ReporteAdapter ReportAdapter;
+    private ReporteAdapterCiudadano ReportAdapter;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     ///codigo para menu desplegable
@@ -43,7 +43,7 @@ public class mis_reportes extends AppCompatActivity {
         Query query = db.collection("reportes").whereEqualTo("usuario", user.getEmail());
         FirestoreRecyclerOptions<Reporte> firestoreRecyclerOptions = new FirestoreRecyclerOptions.Builder<Reporte>()
                 .setQuery(query, Reporte.class).build();
-        ReportAdapter = new ReporteAdapter(firestoreRecyclerOptions, mis_reportes.this);
+        ReportAdapter = new ReporteAdapterCiudadano(firestoreRecyclerOptions, mis_reportes.this);
         ReportAdapter.notifyDataSetChanged();
         RecyclerViewReporte.setAdapter(ReportAdapter);
 

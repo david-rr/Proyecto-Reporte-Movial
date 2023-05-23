@@ -72,6 +72,7 @@ public class FeedAdmin extends AppCompatActivity {
                 .setQuery(query, Reporte.class).build();
 
         ReportAdapter = new ReporteAdapter(firestoreRecyclerOptions, FeedAdmin.this);
+        ReportAdapter.startListening();
         ReportAdapter.notifyDataSetChanged();
         RecyclerViewReporte.setAdapter(ReportAdapter);
 
@@ -167,7 +168,6 @@ public class FeedAdmin extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         ReportAdapter.startListening();
-        ReportAdapter.stopListening();
         auxTot = Resumen.getTotal();
         totReport.setText(String.valueOf(auxTot));
         auxPendiente = Resumen.getPendiente();
